@@ -10,10 +10,6 @@
 <body>
 
     <div id="app">
-        <p>{{ grettings }}</p>
-        <p>is it true ?:{{ isItTrue ? 'yes':'no'}}</p>
-        <p>{{ array[0] }}</p>
-        <p>{{ obj.car }}</p>
         <p>{{ message() }}</p>
     </div>
 
@@ -25,16 +21,22 @@
             const date = new Date().toLocaleString();
 
             const grettings = 'Hello guys, today is ' + date;
-            const isItTrue = true;
+            const isItTrue = false;
             const array = ['Francis','Jane'];
             const obj = {car:'Ford'}
-            const message = () => 'Message from function'
+
+            /// function
+            //const message = () => 'Message from function'
+
+            function message(){
+                const randName = array[Math.floor(Math.random()*array.length)];
+                if(isItTrue) {
+                    return `${grettings}, mi name is ${randName}`
+                }
+                return obj.car;
+            }
 
             return {
-                grettings,
-                isItTrue,
-                array,
-                obj,
                 message
             }
         }
