@@ -9,5 +9,35 @@
 </head>
 <body>
 
+    <div id="app">
+        <p>{{ grettings }}</p>
+        <p>is it true ?:{{ isItTrue ? 'yes':'no'}}</p>
+        <p>{{ array[0] }}</p>
+        <p>{{ obj.car }}</p>
+        <p>{{ message() }}</p>
+    </div>
+
 </body>
+<script>
+    const { createApp } = Vue;
+    createApp({
+        setup(){
+            const date = new Date().toLocaleString();
+
+            const grettings = 'Hello guys, today is ' + date;
+            const isItTrue = true;
+            const array = ['Francis','Jane'];
+            const obj = {car:'Ford'}
+            const message = () => 'Message from function'
+
+            return {
+                grettings,
+                isItTrue,
+                array,
+                obj,
+                message
+            }
+        }
+    }).mount('#app')
+</script>
 </html>
