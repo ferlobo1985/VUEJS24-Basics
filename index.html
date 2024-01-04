@@ -10,34 +10,33 @@
 <body>
 
     <div id="app">
-        <p>{{ message() }}</p>
+       <p>Name: {{ user.name }}</p>
+       <p>occupation: {{ user.occupation }}</p>
+       <p>Age: {{ user.age }}</p>
+
+       {{ updateAge() }}
     </div>
 
 </body>
 <script>
-    const { createApp } = Vue;
+    const { createApp, ref, reactive  } = Vue;
     createApp({
         setup(){
-            const date = new Date().toLocaleString();
+            let user = reactive({
+                name:'Francis',
+                occupation:'DEV',
+                age:18
+            });
 
-            const grettings = 'Hello guys, today is ' + date;
-            const isItTrue = false;
-            const array = ['Francis','Jane'];
-            const obj = {car:'Ford'}
-
-            /// function
-            //const message = () => 'Message from function'
-
-            function message(){
-                const randName = array[Math.floor(Math.random()*array.length)];
-                if(isItTrue) {
-                    return `${grettings}, mi name is ${randName}`
-                }
-                return obj.car;
+            function updateAge(){
+                setTimeout(()=>{
+                    user.age = 20;
+                },3000)
             }
 
             return {
-                message
+                user,
+                updateAge
             }
         }
     }).mount('#app')
